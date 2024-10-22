@@ -1,0 +1,6 @@
+# update the values below to match your requirements
+LOCATION="eastus"
+RESOURCE_GROUP="resource-group-name-goes-here"
+VNET_ID="vnet-resource-name-goes-here"  
+SUBNET_ID="subnet-resource-name-goes-here" 
+ADB_NAME="adb-name-goes-here"
