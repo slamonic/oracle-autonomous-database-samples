@@ -19,12 +19,10 @@ Oracle Database@Azure brings Oracle's best databases - Exadata and Autonomous Da
     * Use these great VS Code extensions that help you develop and debug your database apps
         * SQL Developer for VS Code ([Learn More](https://www.oracle.com/database/sqldeveloper/vscode/) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=Oracle.sql-developer))
         * Oracle Developer Tools for VS Code  ([Learn More](https://docs.oracle.com/en/database/oracle/developer-tools-for-vscode/getting-started/gettingstarted.html) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=Oracle.oracledevtools))
-* Sample code
+* [Sample SQL code](./sql/sql-scripts.md)
     * Create a database user and add sample data
     * Work with data in Azure Storage
-    * Get started with Select AI ([enable access](sql/select-ai-admin-enable.sql) | [samples](sql/select-ai-get-started.sql)) 
-    * Create JSON table collections and access using python / REST
-    * Run a spatial query, graph query
+    * Get started with Select AI
     * .... and more
 
 <!--
