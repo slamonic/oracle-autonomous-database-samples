@@ -9,13 +9,17 @@ ADB_NAME="quickstart"
 ## NETWORKING
 # database
 VNET_NAME="dev-vnet"
-VNET_PREFIX="192.168.0.0/16"
+#VNET_PREFIX="192.168.0.0/16"
+VNET_PREFIX="19x.xxx.0.0/16"
 # subnet for the database
 SUBNET_NAME="dev-sn-db"
-SUBNET_PREFIX="192.168.1.0/24"
+#SUBNET_PREFIX="192.168.1.0/24"
+SUBNET_PREFIX="19x.xxx.1.0/24"
+
 # client subnet
 SUBNET2_NAME="dev-sn-client"
-SUBNET2_PREFIX="192.168.2.0/24"
+#SUBNET2_PREFIX="192.168.2.0/24"
+SUBNET2_PREFIX="19x.xxx.2.0/24"
 
 #network security group
 NSG_NAME=$SUBNET2_NAME-nsg
