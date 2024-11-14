@@ -9,9 +9,21 @@ Oracle Database@Azure brings Oracle's best databases - Exadata and Autonomous Da
 * Quickly react to business demands using one converged, fully automated database that’s optimized for all workloads and data formats.
 
 ## Getting Started
-* [Install the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/)
-* [Deploy a new Oracle Autonomous Database using the Azure CLI](azure-cli/deploy-adb.md)
-* Get started with Select AI ([enable access](sql/select-ai-admin-enable.sql) | [samples](sql/select-ai-get-started.sql)) 
+* [Subscribe to Oracle Database@Azure](https://www.youtube.com/watch?v=MEB8kB_TI2I)
+* Deploy a new Oracle Autonomous Database 
+    * [Using the Azure Portal](https://youtu.be/QOCvRr5CfeQ)
+    * [Using Terraform scripts](https://github.com/oci-landing-zones/terraform-oci-multicloud-azure/tree/main)
+    * [Using the Azure CLI](azure-cli/create-adb.md)
+* Connect to your Autonomous Database
+    * [Learn about connectivity options](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/connect-preparing.html)
+    * Use these great VS Code extensions that help you develop and debug your database apps
+        * SQL Developer for VS Code ([Learn More](https://www.oracle.com/database/sqldeveloper/vscode/) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=Oracle.sql-developer))
+        * Oracle Developer Tools for VS Code  ([Learn More](https://docs.oracle.com/en/database/oracle/developer-tools-for-vscode/getting-started/gettingstarted.html) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=Oracle.oracledevtools))
+* [Sample SQL code](./sql/sql-scripts.md)
+    * Create a database user and add sample data
+    * Work with data in Azure Storage
+    * Get started with Select AI
+    * .... and more
 
 <!--
 
