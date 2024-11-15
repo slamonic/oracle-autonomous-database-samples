@@ -9,7 +9,9 @@
 define CONN='your-database-connection-string'  
 -- the database user that will own the sample schema
 define USER_NAME='moviestream' 
-define USER_PASSWORD='your-strong-password' 
+-- Password for the database user
+-- The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character.
+define USER_PASSWORD='' 
 --
 -- GENAI
 --
