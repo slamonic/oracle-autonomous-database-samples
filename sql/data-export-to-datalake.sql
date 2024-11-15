@@ -11,20 +11,13 @@
 @config.sql
 
 -- Create a credential in order to connect to data lake storage
-BEGIN
-    DBMS_CLOUD.CREATE_CREDENTIAL(
-        credential_name => 'ADLS_CRED',
-        username => '&STORAGE_ACCOUNT_NAME',
-        password => '&STORAGE_KEY'
-    );
-END;
-/
+@credential-create.sql storage
 
 -- List the files in that storage container
 SELECT object_name, bytes 
 FROM dbms_cloud.list_objects(
-    credential_name => 'ADLS_CRED',
-    location_uri => '&STORAGE_URL'
+    credential_name => '&STORAGE_CREDENTIAL_NAME',
+    location_uri => '&STORAGE_URL/adb-sample'
 );
 
 --
@@ -37,8 +30,8 @@ FROM genre;
 -- Export in CSV format
 BEGIN
   DBMS_CLOUD.EXPORT_DATA(
-    credential_name => 'ADLS_CRED',
-    file_uri_list => '&STORAGE_URL/data/genre/genre',
+    credential_name => '&STORAGE_CREDENTIAL_NAME',
+    file_uri_list => '&STORAGE_URL/adb-sample/data/genre/genre',
     query => 'SELECT * FROM genre',
     format => JSON_OBJECT('type' VALUE 'csv', 'delimiter' VALUE ',')
   );
@@ -48,6 +41,6 @@ END;
 -- List the files in that storage container. Notice the new genre data.
 SELECT object_name, bytes 
 FROM dbms_cloud.list_objects(
-    credential_name => 'ADLS_CRED',
-    location_uri => '&STORAGE_URL'
+    credential_name => '&STORAGE_CREDENTIAL_NAME',
+    location_uri => '&STORAGE_URL/adb-sample'
 );

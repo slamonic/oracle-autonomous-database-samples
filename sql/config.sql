@@ -9,8 +9,7 @@
 define CONN='your-database-connection-string'  
 -- the database user that will own the sample schema
 define USER_NAME='moviestream' 
--- Password for the database user
--- The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character.
+--The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character
 define USER_PASSWORD='' 
 --
 -- GENAI
@@ -21,6 +20,8 @@ define AZURE_OPENAI_ENDPOINT='your-azure-openai-endpoint'
 define AZURE_OPENAI_RESOURCE_NAME='your-azure-openai-resourcename'
 -- Azure OpenAI deployment Name
 define AZURE_OPENAI_DEPLOYMENT_NAME='your-azure-openai-deployment-name'
+-- Azure OpenAI Embedding deployment name. This is used for creating embeddings for RAG
+define AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME='your-azure-openai-embedding-deployment-name'
 -- Azure OpenAI key
 define AZURE_OPENAI_KEY='your-azure-openai-key'
 
@@ -34,4 +35,6 @@ define AZURE_OPENAI_CREDENTIAL_NAME='azure_cred4o'
 -- Get this information by running ../azure-cli/show-data-lake-storage-info.sh
 define STORAGE_KEY='your-azure-data-lake-storage-key' 
 define STORAGE_ACCOUNT_NAME='your-azure-data-lake-storage-account-name'
-define STORAGE_URL='https://your-storage-url/adb-sample'
+define STORAGE_URL='https://your-storage-url'
+-- You can leave this default
+define STORAGE_CREDENTIAL_NAME='adls_cred'
