@@ -6,20 +6,13 @@
 @config.sql
 
 -- Create a credential in order to connect to data lake storage
-BEGIN
-    DBMS_CLOUD.CREATE_CREDENTIAL(
-        credential_name => 'ADLS_CRED',
-        username => '&STORAGE_ACCOUNT_NAME',
-        password => '&STORAGE_KEY'
-    );
-END;
-/
+@credential-create.sql storage
 
 -- List the files
 SELECT object_name, bytes 
 FROM dbms_cloud.list_objects(
-    credential_name => 'ADLS_CRED',
-    location_uri => '&STORAGE_URL'
+    credential_name => '&STORAGE_CREDENTIAL_NAME',
+    location_uri => '&STORAGE_URL/adb-sample'
 );
 
 -- Create a table for movies that were created from books
@@ -37,7 +30,7 @@ CREATE TABLE movie_from_book
 BEGIN
   DBMS_CLOUD.COPY_DATA
   ( table_name        => 'MOVIE_FROM_BOOK',
-    credential_name   => 'ADLS_CRED',
+    credential_name   => '&STORAGE_CREDENTIAL_NAME',
     file_uri_list     => 'https://storagemartygubaradb.blob.core.windows.net/adb-sample/data/movie_from_book/*.csv',
     field_list        => 'MOVIE_NAME           CHAR(4000),
                           MOVIE_RELEASE_DATE   CHAR date_format DATE MASK "YYYY-MM-DD",

@@ -7,33 +7,9 @@
 
 -- config.sql contains the endpoints, resource groups and other settings required to connect to your Azure OpenAI deployment
 @config.sql
-
  
 -- Create a credential that allows the user to access the Azure OpenAI endpoint
-DECLARE
-    l_exists number := 0;
-BEGIN
-    -- Create your credential. Replace it if already exists
-    select COUNT(*)
-    into l_exists
-    from user_credentials    
-    where upper(credential_name)=upper('&AZURE_OPENAI_CREDENTIAL_NAME');
-
-    IF l_exists = 1 THEN
-        dbms_cloud.drop_credential (
-            credential_name => '&AZURE_OPENAI_CREDENTIAL_NAME'
-        );
-    END IF;
-
-    
-    dbms_cloud.create_credential (                                                 
-        credential_name => '&AZURE_OPENAI_CREDENTIAL_NAME',                                            
-        username => 'AZURE_OPENAI',                                                 
-        password => '&AZURE_OPENAI_KEY'
-    );
-
-END;                                                                           
-/  
+@credential-create.sql openai
 
 /*
   A Select AI profile describes the LLM you will use plus information that will be used for natural language queries. You can create as many 

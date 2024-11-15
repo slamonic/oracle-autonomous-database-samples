@@ -16,6 +16,7 @@ Try out these scripts to learn how to get started using Autonomous Database. Sim
 
 |Script|Description|
 |----|---|
+|[credential-create.sql](credential-create.sql)|Autonomous Database credentials contain the secret keys used to connect to services - like Azure OpenAI. This script creates those credentials. It's called by multiple scripts listed below |
 |[data-create-sample-schema.sql](data-create-sample-schema.sql)|Create a sample user and install sample data|
 |[data-create-synthetic-data.sql](data-create-synthetic-data.sql)|Use AI to generate sample data sets|
 |[data-import-from-datalake.sql](data-create-synthetic-data.sql)|Import sample data from Azure Data Lake. Sample data was uploaded using the [`create-all-resources.sh`](../azure-cli/create-all-resources.sh)and [`create-data-lake-storage.sh`](../azure-cli/create-data-lake-storage.sh) scripts. You can run [`show-data-lake-storage-info.sh`](../azure-cli/show-data-lake-storage-info.sh) to get connection information to the storage container.|
@@ -43,7 +44,8 @@ chmod 600 config.sql
 |**Select AI and GenAI**|
 |AZURE_OPENAI_RESOURCE_NAME|Name of the Azure OpenAI endpoint|'dev-adb-azure-openai'|
 |AZURE_OPENAI_ENDPOINT|Your Azure OpenAI endpoint (server name only)|'my-openai.openai.azure.com'|
-|AZURE_OPENAI_DEPLOYMENT_NAME|Your Azure OpenAI deployment name|'gpt-4o'|
+|AZURE_OPENAI_DEPLOYMENT_NAME|Your Azure OpenAI deployment name. This is used for NL2SQL and AI SQLfunctions|'gpt-4o'|
+|AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME|The Azure OpenAI deployment that uses an embedding model. This is used for creating vector embeddings.|'text-embedding-ada-002'|
 |AZURE_OPENAI_KEY|Azure OpenAI secret key|'3Cu9AB...H53'|
 |AZURE_OPENAI_PROFILE_NAME|The Select AI profile that will reference your Azure OpenAI deployment|'gpt4o'|
 |AZURE_OPENAI_CREDENTIAL_NAME|The database credential that will be used to connect to Azure OpenAI|'azure_cred4o'|
@@ -51,6 +53,7 @@ chmod 600 config.sql
 |STORAGE_ACCOUNT_NAME|Name of your Azure Data Lake Storage Gen 2 account. You can run [`show-data-lake-storage-info.sh`](../azure-cli/show-data-lake-storage-info.sh) to get storage details|'mysamplestorage'|
 |STORAGE_URL|Azure data lake storage URL|'https://mysamplestorage.blob.core.windows.net/adb-sample'
 |STORAGE_KEY|The secret key used to connecto Azure Data Lake Storage|'dJVNxq1YTT...jp/g=='
+|STORAGE_CREDENTIAL_NAME|The name of the Autonomous Database credential that's used to connect to Azure Data Lake Storage Gen 2|'adls_cred'|
 
 You can find the Azure OpenAI settings in the Azure OpenAI Studio:
 ![Azure OpenAI settings](images/azure-openai.png)
