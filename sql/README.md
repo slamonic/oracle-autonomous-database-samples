@@ -2,14 +2,14 @@
 Numerous SQL scripts are available to help you get started using Autonomous Database on Oracle Database@Azure
 
 Prerequisites:
-* [Create an Autonomous Database](../azure-cli/create-adb.md)
+* [Create an Autonomous Database](../azure-cli/README.md)
 * A VM deployed on the same VCN as Autonomous Database (or on a network that can access your Autonomous Database)
 * Use these great VS Code extensions that help you develop and debug your database apps:
     * SQL Developer for VS Code ([Learn More](https://www.oracle.com/database/sqldeveloper/vscode/) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=Oracle.sql-developer))
     * Oracle Developer Tools for VS Code  ([Learn More](https://docs.oracle.com/en/database/oracle/developer-tools-for-vscode/getting-started/gettingstarted.html) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=Oracle.oracledevtools)) 
 
 ## Connect to Autonomous Database
-There are [numerous client tools](../azure-cli/create-adb.md#whats-next) that you can use to start working with Autonomous Database. This includes the built-in SQL Worksheet that's part of the Database Tools (and available from the linked OCI Console) or a tool like VS Code and one an Oracle Database extension.
+There are [numerous client tools](../azure-cli/README.md#whats-next) that you can use to start working with Autonomous Database. This includes the built-in SQL Worksheet that's part of the Database Tools (and available from the linked OCI Console) or a tool like VS Code and one an Oracle Database extension.
 
 ## Sample scripts
 Try out these scripts to learn how to get started using Autonomous Database. Simply update the [`config.sql`](#configuration-file) script prior to running the samples:
@@ -37,7 +37,7 @@ chmod 600 config.sql
 
 |Setting|Description|Example|
 |----|----|----|
-|CONN|JDBC Connection. [Go here](../azure-cli/create-adb.md#jdbc-example) to see how to get the connection details.|jdbc:oracle:thin:@(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=your-host.oraclecloud.com))(connect_data=(service_name=my_quickstart_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=no)))
+|CONN|JDBC Connection. [Go here](../azure-cli/README.md#jdbc-example) to see how to get the connection details.|jdbc:oracle:thin:@(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=your-host.oraclecloud.com))(connect_data=(service_name=my_quickstart_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=no)))
 |USER_NAME|Database user that will contain sample data|'moviestream'|
 |USER_PASSWORD|Password for the sample database user|'watchS0meMovies#'
 |**Select AI and GenAI**|
