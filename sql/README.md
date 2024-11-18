@@ -26,7 +26,7 @@ Try out these scripts to learn how to get started using Autonomous Database. Sim
 |[select-ai-nl2sql.sql](select-ai-nl2sql.sql)|Use natural language to query your data|
 |[select-ai-sql-function.sql](select-ai-sql-function.sql)|Use Select AI SQL functions to apply AI to your data. These examples summarize a support chat and make product recommendations based on info in your database|
 |[select-ai-rag.sql](select-ai-rag.sql)|Select AI makes it easy to create AI vector pipelines and then ask questions using AI and your organization's knowledge base|
-
+|[json-duality.sql](json-duality.sql)|Autonomous Database allows you to with JSON in many different ways. JSON Collections stored in the database, and JSON Duality Views are a couple of the examples here.|
 
 ### Configuration file
 Many of the SQL scripts rely on information found in your [config.sql](config.sql) file. Update the config file prior to running any of the scripts. 
