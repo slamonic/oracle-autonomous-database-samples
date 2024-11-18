@@ -71,7 +71,6 @@ customer @insert @update @delete
     yrs_customer    : yrs_customer
     streams : streams
     [{
-        cust_id : cust_id
         day_id : day_id
         genre_id : genre_id
         movie_id : movie_id
