@@ -22,14 +22,17 @@ insert into movie_budget values ('{"movie_id": 1,"movie_title":"Avatar","movie_y
 insert into movie_budget values ('{"movie_id": 2,"movie_title":"Ghostbusters II","movie_year": 1989, 
 "sku":"FWT19789","runtime": 104,"cast":["Bill Murray","Sigourney Weaver"],
 "genre":["Fantasy","Sci-Fi","Thriller","Comedy"]}' );
+commit;
 --see the JSON collection that has been created along with the ability to query it
 select * from movie_budget;
 --Let's add budget information to the movies
 update movie_budget set data= JSON_TRANSFORM(data, set '$.budgetUnit' = 'Million USD', set '$.budget'=1000000);
+commit;
 select json_value(data, '$.movie_id') movie_id,json_value(data,'$.budget') budget from movie_budget;
 --Change the budget for one of the movies
 update movie_budget set data= JSON_TRANSFORM(data,  set '$.budget'=(json_value(data,'$.budget') * 2))
 where JSON_VALUE(data,'$.movie_id')=2;
+commit;
 select json_value(data, '$.movie_id') movie_id,json_value(data,'$.budget') budget from movie_budget;
 
 --JSON Duality
@@ -69,8 +72,9 @@ customer @insert @update @delete
     LastName        : last_name,
     age             : age,
     yrs_customer    : yrs_customer
-    streams : streams
+    streams : streams @insert @update @delete
     [{
+        cust_id : cust_id
         day_id : day_id
         genre_id : genre_id
         movie_id : movie_id
@@ -81,6 +85,27 @@ select * from customer_streams_dv;
 --Pull back the customers watching romance movies
 select * from customer_streams_dv
 where JSON_VALUE(data,'$.streams.genre_id')=19;
+
+/* Now to insert a new record into customers and streams we can do that through the Duality View. 
+Here we select first from customer and from streams to show there is no value */
+select * from customer where cust_id=555;
+select * from streams where cust_id=555;
+--Now do an insert to the DV to add a new customer and add a stream
+insert into customer_streams_dv values ('{
+      "_id"            : 555,
+    "FirstName"       : "Michelle",
+    "LastName"        : "Jones",
+    "age"             : 36,
+  "yrs_customer"    : 0 ,
+  "streams" : [{
+                "day_id" : "2024-11-18T00:00:00",
+                "genre_id" : 19,
+                "movie_id" : 3694}]}');
+
+commit;
+select * from customer where cust_id=555;
+select * from streams where cust_id=555;
+--now we have rows in both of the underlying relational tables
 
 /* With the JSON Collections and JSON Duality Views you can use API calls with GET and PUT to work
 with the JSON in the database. We have just shown here SQL access to the JSON. */
