@@ -18,15 +18,15 @@ Try out these scripts to learn how to get started using Autonomous Database. Sim
 |----|---|
 |[credential-create.sql](credential-create.sql)|Autonomous Database credentials contain the secret keys used to connect to services - like Azure OpenAI. This script creates those credentials. It's called by multiple scripts listed below |
 |[data-create-sample-schema.sql](data-create-sample-schema.sql)|Create a sample user and install sample data|
-|[data-create-synthetic-data.sql](data-create-synthetic-data.sql)|Use AI to generate sample data sets|
+|[data-create-synthetic-data.sql](data-create-synthetic-data.sql)|Use AI to generate sample data sets. You will create tables and then populate them based on rules that you specify.|
 |[data-import-from-datalake.sql](data-create-synthetic-data.sql)|Import sample data from Azure Data Lake. Sample data was uploaded using the [`create-all-resources.sh`](../azure-cli/create-all-resources.sh)and [`create-data-lake-storage.sh`](../azure-cli/create-data-lake-storage.sh) scripts. You can run [`show-data-lake-storage-info.sh`](../azure-cli/show-data-lake-storage-info.sh) to get connection information to the storage container.|
 |[data-export-to-datalake.sql](data-export-to-datalake.sql)|Export data from a table to your data lake storage|
 |[select-ai-admin-enable.sql](select-ai-admin-enable.sql)|Autonomous Database is secure by default. In order to access external services, you will need to enable connectivity. This script enables connectivity to your Azure OpenAI resource.|
 |[select-ai-create-profile.sql](select-ai-create-profile.sql)|A Select AI profile is used to connect to your AI provider. It includes information about your provider plus tables and view that you want to be targets for natural language queries|
 |[select-ai-nl2sql.sql](select-ai-nl2sql.sql)|Use natural language to query your data|
 |[select-ai-sql-function.sql](select-ai-sql-function.sql)|Use Select AI SQL functions to apply AI to your data. These examples summarize a support chat and make product recommendations based on info in your database|
-|[select-ai-rag.sql](select-ai-rag.sql)|Select AI makes it easy to create AI vector pipelines and then ask questions using AI and your organization's knowledge base|
-|[json-duality.sql](json-duality.sql)|Autonomous Database allows you to with JSON in many different ways. JSON Collections stored in the database, and JSON Duality Views are a couple of the examples here.|
+|[select-ai-rag.sql](select-ai-rag.sql)|Select AI makes it easy to create AI vector management pipelines and then ask questions using AI and your organization's knowledge base|
+|[json-duality.sql](json-duality.sql)|Autonomous Database allows you to work with JSON in many different ways. JSON Collections stored your documents in tables. No changes are made to those documents. JSON Duality Views present relational data as JSON - allowing you to query and update that data using the JSON APIs (like MongoDB API) or SQL. Check out both approaches.|
 
 ### Configuration file
 Many of the SQL scripts rely on information found in your [config.sql](config.sql) file. Update the config file prior to running any of the scripts. 
