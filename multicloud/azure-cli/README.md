@@ -1,7 +1,12 @@
 # Oracle Database@Azure: Create an Autonomous Database
+There are different ways that you can deploy a new Oracle Autonomous Database:
+* [Using the Azure Portal](https://youtu.be/QOCvRr5CfeQ)
+* [Using Terraform scripts](https://github.com/oci-landing-zones/terraform-oci-multicloud-azure/tree/main)
+* Using the Azure CLI
+
 The steps below show how to create an Autonomous Database using the Azure CLI. 
 
-Prerequisites:
+## Prerequisites:
 * [Install the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/) 
 * [Subscribe to Oracle Database@Azure](https://www.youtube.com/watch?v=MEB8kB_TI2I) 
 * Ensure you have the appropriate user groups and privileges. See [details for onboarding Autonomous Database](https://learn.microsoft.com/en-us/azure/oracle/oracle-db/onboard-oracle-database)
@@ -72,12 +77,12 @@ Connect to your Autonomous Database!
 
 #### JDBC Example:
 JDBC is a common way to connect to Autonomous Database. For example, you can use the **Custom JDBC URL** in the VS Code SQL Developer Extension:
-    ![connection dialog](images/connect-dialog.png)
+    ![connection dialog](../images/connect-dialog.png)
 
 Notice the `jdbc:oracle:thin:@` prefix followed by a connection string. You can find the connection string in different ways. 
 
 1. Go to your Autonomous Database blade in the Azure Portal and go to **Settings -> Connections**:
-    ![Azure Portal connections](images/connections-portal.png)
+    ![Azure Portal connections](../images/connections-portal.png)
 2. Use the Azure cli script [`show-adb-info.sh`](./show-adb-info.sh). That script will return information about your Autonomous Database, including connection details.
 
 <hr>

@@ -2,9 +2,9 @@
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
 # update the values below to match your requirements. 
-TENANCY_OCID="your-tenancy-ocid"
+TENANCY_OCID="ocid1.tenancy.oc1..aaaaaaaafcue47pqmrf4vigneebgbcmmoy5r7xvoypicjqqge32ewnrcyx2a"
 REGION="us-ashburn-1"
-COMPARTMENT_NAME="your-target-compartment"
+COMPARTMENT_NAME="from-github"
 ADB_NAME="quickstart"
 
 ## CLOUD STORAGE
@@ -13,4 +13,4 @@ BUCKET_NAME="adb-sample"
 
 ## IDENTITIES
 # The password is for the ADB ADMIN user. It must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character
-USER_PASSWORD=""
+USER_PASSWORD="bigdataPM2019#"

@@ -8,7 +8,12 @@
 source ./config
 
 # Ask for confirmation
-echo "Are you sure you want to delete database '$ADB_NAME' in region '$REGION', compartment '$COMPARTMENT_NAME'?"
+echo ""
+echo "Are you sure you want to delete the sample resources?"
+echo "- ADB: $ADB_NAME"
+echo "- Bucket: $BUCKET_NAME"
+echo "- Compartment: $COMPARTMENT_NAME"
+echo ""
 echo "Enter (y/n)"
 read confirmation
 
@@ -17,7 +22,21 @@ if [[ $confirmation == [yY] || $confirmation == [yY][eE][sS] ]]; then
     COMPARTMENT_OCID=`oci iam compartment list --region $REGION --all --query "data[?name=='$COMPARTMENT_NAME' && \"lifecycle-state\"=='ACTIVE'].id | [0]" --raw-output`
     ADB_OCID=`oci db autonomous-database list --region $REGION --compartment-id $COMPARTMENT_OCID --query "data[?\"db-name\"=='$ADB_NAME' && \"lifecycle-state\"=='AVAILABLE'].id | [0]" --raw-output`
     
-    oci db autonomous-database delete --region $REGION --force --autonomous-database-id $ADB_OCID --wait-for-state TERMINATED
+    oci db autonomous-database delete --region $REGION --force --autonomous-database-id $ADB_OCID --wait-for-state SUCCEEDED
+
+    if [ $? -eq 0 ]; then
+        echo "Database '$ADB_NAME' has been successfully deleted."
+    fi    
+
+    echo "Deleting Object Storage bucket"
+    oci os bucket delete --region $REGION --bucket-name $BUCKET_NAME --force --empty
+    
+    echo "Deleting compartment $COMPARTMENT_NAME"
+    oci iam compartment delete --compartment-id $COMPARTMENT_OCID --force --wait-for-state SUCCEEDED
+    
+    if [ $? -eq 0 ]; then
+        echo "Resources deleted."
+    fi
 else
-    echo "Deletion cancelled. The database was not deleted."
+    echo "Deletion cancelled."
 fi
