@@ -1,0 +1,16 @@
+# Copyright (c) 2024 Oracle and/or its affiliates.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
+
+# update the values below to match your requirements. 
+TENANCY_OCID="your-tenancy-ocid"
+REGION="us-ashburn-1"
+COMPARTMENT_NAME="your-target-compartment"
+ADB_NAME="quickstart"
+
+## CLOUD STORAGE
+# Buckets require a unique name within a region. Enter your unique name below.
+BUCKET_NAME="adb-sample"
+
+## IDENTITIES
+# The password is for the ADB ADMIN user. It must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character
+USER_PASSWORD=""

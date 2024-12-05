@@ -12,11 +12,11 @@
 SELECT object_name, bytes 
 FROM dbms_cloud.list_objects(
     credential_name => '&STORAGE_CREDENTIAL_NAME',
-    location_uri => '&STORAGE_URL/adb-sample'
+    location_uri => '&STORAGE_URL'
 );
 
 -- Create a table for movies that were created from books
-drop table movie_from_book;
+drop table if exists movie_from_book;
 CREATE TABLE movie_from_book
    (
      movie_name           VARCHAR2(4000)
@@ -31,7 +31,7 @@ BEGIN
   DBMS_CLOUD.COPY_DATA
   ( table_name        => 'MOVIE_FROM_BOOK',
     credential_name   => '&STORAGE_CREDENTIAL_NAME',
-    file_uri_list     => 'https://storagemartygubaradb.blob.core.windows.net/adb-sample/data/movie_from_book/*.csv',
+    file_uri_list     => '&STORAGE_URL/data/movie_from_book/*.csv',
     field_list        => 'MOVIE_NAME           CHAR(4000),
                           MOVIE_RELEASE_DATE   CHAR date_format DATE MASK "YYYY-MM-DD",
                           BOOK_NAME            CHAR(4000),

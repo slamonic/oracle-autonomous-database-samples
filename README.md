@@ -1,19 +1,22 @@
-# Oracle Database@Azure Samples
+# Oracle Autonomous Database Samples
 
 [![License: UPL](https://img.shields.io/badge/license-UPL-green)](https://img.shields.io/badge/license-UPL-green) 
 
 ## Introduction
-Oracle Database@Azure brings Oracle's best databases - Exadata and Autonomous Database - to Microsoft Azure as a native Azure services. Modernize and deliver powerful new apps that leverage Oracle Database 23ai and Azure services:
-* Build new cloud native apps using Azure services, such as Azure Kubernetes and Azure OpenAI, with Oracle Autonomous Database.
+Oracle Autonomous Database provides a fully automated cloud database service that eliminates manual database management tasks, reduces operational costs, enhances security through automatic patching and encryption, and enables businesses to rapidly scale and optimize their data processing and analytics. 
+
+Autonomous Database runs natively on OCI, Azure (Oracle Database@Azure) and Google Cloud (Oracle Database@Google Cloud). Modernize and deliver powerful new apps that leverage Oracle Database 23ai with other cloud services services:
+* Build new cloud native apps using built-in integrations, such as Kubernetes, AI, DevOps and more
 * Enhance existing apps with natural language and other generative AI capabilities.
 * Quickly react to business demands using one converged, fully automated database that’s optimized for all workloads and data formats.
 
+Use these samples to deploy Autonomous Database on cloud providers using APIs. Then, check out the SQL samples that leverage both Autonomous Database cloud integration and converged database capabiltities.
+
 ## Getting Started
-* [Subscribe to Oracle Database@Azure](https://www.youtube.com/watch?v=MEB8kB_TI2I)
-* Deploy a new Oracle Autonomous Database 
-    * [Using the Azure Portal](https://youtu.be/QOCvRr5CfeQ)
-    * [Using Terraform scripts](https://github.com/oci-landing-zones/terraform-oci-multicloud-azure/tree/main)
-    * [Using the Azure CLI](azure-cli/README.md)
+* Deploy Autonomous Database: 
+    * [On OCI](./multicloud/oci-cli/README.md) 
+    * [On Azure](./multicloud/azure-cli/README.md)
+    * On Google Cloud (deployment script coming soon)
 * Connect to your Autonomous Database
     * [Learn about connectivity options](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/connect-preparing.html)
     * Use these great VS Code extensions that help you develop and debug your database apps
@@ -21,8 +24,9 @@ Oracle Database@Azure brings Oracle's best databases - Exadata and Autonomous Da
         * Oracle Developer Tools for VS Code  ([Learn More](https://docs.oracle.com/en/database/oracle/developer-tools-for-vscode/getting-started/gettingstarted.html) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=Oracle.oracledevtools))
 * [Sample SQL code](./sql/README.md)
     * Create a database user and add sample data
-    * Work with data in Azure Storage
+    * Work with data in cloud storage
     * Get started with Select AI
+    * Build property graphs and run analytics over those graphs
     * .... and more
 
 <!--

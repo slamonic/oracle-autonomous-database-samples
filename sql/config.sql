@@ -1,40 +1,65 @@
 -- Copyright (c) 2024 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
+--
 -- Configuration information for Autonomous Database
-
+--
 -- Connect string
--- get the connection string by running ../azure-cli/show-adb-info.sh
--- Example: jdbc:oracle:thin:@(description= ...)
-define CONN='your-database-connection-string'  
--- the database user that will own the sample schema
-define USER_NAME='moviestream' 
---The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character
-define USER_PASSWORD='' 
+-- you can get the ADB connection info by running /multicloud/{oci|azure|gcloud}-cli/show-adb-info.sh
+define CONN='jdbc:oracle:thin:@(description=...)'
+-- user name and password used for the sample data
+define USER_NAME='moviestream'
+-- # The password is for the sample user. It must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character
+define USER_PASSWORD=''
+
 --
 -- GENAI
+-- Select AI LLM providers are pluggable. ADB will use the one specified below.
 --
--- The endpoint should be the servername only. For example, myopenai.openai.azure.com
-define AZURE_OPENAI_ENDPOINT='your-azure-openai-endpoint'  
--- Azure OpenAI resource name
-define AZURE_OPENAI_RESOURCE_NAME='your-azure-openai-resourcename'
--- Azure OpenAI deployment Name
-define AZURE_OPENAI_DEPLOYMENT_NAME='your-azure-openai-deployment-name'
--- Azure OpenAI Embedding deployment name. This is used for creating embeddings for RAG
-define AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME='your-azure-openai-embedding-deployment-name'
--- Azure OpenAI key
-define AZURE_OPENAI_KEY='your-azure-openai-key'
+-- The AI provider: oci, azure or google
+define AI_PROVIDER='oci'
+-- The Select AI profile name that encapsulates the AI provider info + tables for NL2SQL
+define AI_PROFILE_NAME='genai'
+-- This is a database credential that captures the secret key or other connection info
+define AI_CREDENTIAL_NAME='AI_cred'
 
--- Database user that will be connecting to Azure OpenAI plus credential details for connecting to the resource
-define AZURE_OPENAI_PROFILE_NAME='gpt4o'
-define AZURE_OPENAI_CREDENTIAL_NAME='azure_cred4o'
+-- The endpoint should be the servername only. For example, myopenai.openai.azure.com. This is not required for OCI GenAI.
+define AI_ENDPOINT=''
+-- API key for AI service. This is not required for OCI GenAI.
+define AI_KEY=''
+
+-- For Azure:
+-- Azure OpenAI resource name
+define AZURE_OPENAI_RESOURCE_NAME='your-openai-resource-name'
+-- Azure OpenAI deployment name
+define AZURE_OPENAI_DEPLOYMENT_NAME='your-openai-deployment-name'
+-- Azure OpenAI Embedding deployment name. This is used for creating embeddings for RAG
+define AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME='your-openai-emedding-deployment-name'
 
 --
 -- Data Lake Storage
 --
--- Get this information by running ../azure-cli/show-data-lake-storage-info.sh
-define STORAGE_KEY='your-azure-data-lake-storage-key' 
-define STORAGE_ACCOUNT_NAME='your-azure-data-lake-storage-account-name'
-define STORAGE_URL='https://your-storage-url'
--- You can leave this default
-define STORAGE_CREDENTIAL_NAME='adls_cred'
+-- valid values for storage provider: oci, azure, google
+-- you can get the storage info by running /multicloud/{oci|azure|gcloud}-cli/show-data-lake-storage-info.sh
+define STORAGE_PROVIDER='oci'
+-- The url is a pointer to the bucket that will be used for import/export to object storage
+define STORAGE_URL=''
+-- A database credential encapsulates the authentication details to the object store. Specify a name for the credential below
+define STORAGE_CREDENTIAL_NAME='storage_cred'
+
+-- below required for azure
+define STORAGE_KEY=''
+define STORAGE_ACCOUNT_NAME=''
+
+--
+-- OCI API credentials
+--
+-- One credential is used to access all services. You can get most of these settings from your ~/.oci/config file
+define OCI_USER_OCID=''
+define OCI_TENANCY_OCID=''
+define OCI_FINGERPRINT=''
+-- The private key requires a "-" continuation character at the end of the line. 
+-- Do not include the private key's BEGIN and END lines
+define OCI_PRIVATE_KEY='example1-
+example2-
+example3'

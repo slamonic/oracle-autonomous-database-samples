@@ -46,7 +46,7 @@ WITH prompt_document AS (
 SELECT 
     DBMS_CLOUD_AI.GENERATE(
         PROMPT => prompt_details,
-        PROFILE_NAME => '&AZURE_OPENAI_PROFILE_NAME',
+        PROFILE_NAME => '&AI_PROFILE_NAME',
         ACTION       => 'chat'                     
     ) AS response
 FROM prompt_document;       
@@ -124,7 +124,7 @@ SELECT
                   '2. Use lots of fun emojis in the response. ' ||
                   '3. Finish the email thanking them for being a customer and sign it "From The MovieStream Team" \n' 
                   || doc,
-        profile_name => '&AZURE_OPENAI_PROFILE_NAME',
+        profile_name => '&AI_PROFILE_NAME',
         action => 'chat'
     ) AS email_promotion
 FROM dataset;

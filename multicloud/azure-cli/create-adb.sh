@@ -5,7 +5,7 @@
 
 echo ""
 echo "##"
-echo "# deploy autonomous database"
+echo "# create autonomous database"
 echo "##"
 echo ""
 # ensure you update the config file to match your deployment prior to running the deployment
@@ -25,7 +25,7 @@ az oracle-database autonomous-database create \
 --subnet-id $SUBNET_ID \
 --display-name $ADB_NAME \
 --compute-model ECPU \
---compute-count 2 \
+--compute-count 4 \
 --cpu-auto-scaling true \
 --data-storage-size-in-gbs 500 \
 --store-auto-scaling true \
