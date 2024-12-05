@@ -17,7 +17,7 @@
 SELECT object_name, bytes 
 FROM dbms_cloud.list_objects(
     credential_name => '&STORAGE_CREDENTIAL_NAME',
-    location_uri => '&STORAGE_URL/adb-sample'
+    location_uri => '&STORAGE_URL'
 );
 
 --
@@ -31,16 +31,28 @@ FROM genre;
 BEGIN
   DBMS_CLOUD.EXPORT_DATA(
     credential_name => '&STORAGE_CREDENTIAL_NAME',
-    file_uri_list => '&STORAGE_URL/adb-sample/data/genre/genre',
+    file_uri_list => '&STORAGE_URL/data/genre/genre',
     query => 'SELECT * FROM genre',
     format => JSON_OBJECT('type' VALUE 'csv', 'delimiter' VALUE ',')
   );
 END;
 /
 
+-- Export in parquet format
+BEGIN
+  DBMS_CLOUD.EXPORT_DATA(
+    credential_name => '&STORAGE_CREDENTIAL_NAME',
+    file_uri_list => '&STORAGE_URL/data/customer/customer',
+    query => 'SELECT * FROM genre',
+    format => JSON_OBJECT('type' VALUE 'parquet')
+  );
+END;
+/
+
+
 -- List the files in that storage container. Notice the new genre data.
 SELECT object_name, bytes 
 FROM dbms_cloud.list_objects(
     credential_name => '&STORAGE_CREDENTIAL_NAME',
-    location_uri => '&STORAGE_URL/adb-sample'
+    location_uri => '&STORAGE_URL'
 );

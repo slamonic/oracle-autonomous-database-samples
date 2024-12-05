@@ -9,7 +9,7 @@
 @config.sql
  
 -- Create a credential that allows the user to access the Azure OpenAI endpoint
-@credential-create.sql openai
+@credential-create.sql ai
 
 /*
   A Select AI profile describes the LLM you will use plus information that will be used for natural language queries. You can create as many 
@@ -21,28 +21,47 @@
 BEGIN
     -- recreate the profile
     dbms_cloud_ai.drop_profile (
-        profile_name => '&AZURE_OPENAI_PROFILE_NAME',
+        profile_name => '&AI_PROFILE_NAME',
         force => true
     );
 
-    -- create an AI profile. 
-    dbms_cloud_ai.create_profile (
-        profile_name => '&AZURE_OPENAI_PROFILE_NAME',
-        attributes =>       
-            '{"provider": "azure",        
-                "azure_resource_name": "&AZURE_OPENAI_RESOURCE_NAME",                    
-                "azure_deployment_name": "&AZURE_OPENAI_DEPLOYMENT_NAME",
-                "credential_name": "&AZURE_OPENAI_CREDENTIAL_NAME",
-                "comments":"true",          
-                "object_list": [
-                {"owner": "&USER_NAME", "name": "GENRE"},
-                {"owner": "&USER_NAME", "name": "CUSTOMER"},
-                {"owner": "&USER_NAME", "name": "PIZZA_SHOP"},
-                {"owner": "&USER_NAME", "name": "STREAMS"},
-                {"owner": "&USER_NAME", "name": "MOVIES"},
-                {"owner": "&USER_NAME", "name": "ACTORS"}
-                ]          
+    -- create an AI profile. The attributes are different for providers.
+    IF upper('&AI_PROVIDER') = 'AZURE' THEN
+      dbms_cloud_ai.create_profile (
+          profile_name => '&AI_PROFILE_NAME',
+          attributes =>       
+              '{"provider": "azure",        
+                  "azure_resource_name": "&AZURE_OPENAI_RESOURCE_NAME",                    
+                  "azure_deployment_name": "&AZURE_OPENAI_DEPLOYMENT_NAME",
+                  "credential_name": "&AI_CREDENTIAL_NAME",
+                  "comments":"true",          
+                  "object_list": [
+                  {"owner": "&USER_NAME", "name": "GENRE"},
+                  {"owner": "&USER_NAME", "name": "CUSTOMER"},
+                  {"owner": "&USER_NAME", "name": "PIZZA_SHOP"},
+                  {"owner": "&USER_NAME", "name": "STREAMS"},
+                  {"owner": "&USER_NAME", "name": "MOVIES"},
+                  {"owner": "&USER_NAME", "name": "ACTORS"}
+                  ]          
+                  }'
+      );
+    ELSE
+      dbms_cloud_ai.create_profile (
+          profile_name => '&AI_PROFILE_NAME',
+          attributes =>       
+              '{"provider": "&AI_PROVIDER",        
+                  "credential_name": "&AI_CREDENTIAL_NAME",
+                  "comments":"true",          
+                  "object_list": [
+                  {"owner": "&USER_NAME", "name": "GENRE"},
+                  {"owner": "&USER_NAME", "name": "CUSTOMER"},
+                  {"owner": "&USER_NAME", "name": "PIZZA_SHOP"},
+                  {"owner": "&USER_NAME", "name": "STREAMS"},
+                  {"owner": "&USER_NAME", "name": "MOVIES"},
+                  {"owner": "&USER_NAME", "name": "ACTORS"}
+                  ]          
                 }'
-    );
-    END;
-  /
+      );
+    END IF;
+END;
+/

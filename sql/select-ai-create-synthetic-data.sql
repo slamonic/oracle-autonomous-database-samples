@@ -30,7 +30,7 @@ FROM AWARD_WINNERS;
   Add PK constraints to existing tables. This will ensure that data generation for related tables will create valid values.
   For example, ACTIVITY data will be generated - and valid MOVIE_ID's will be generated for that table b/c of this primary key
 */
-ALTER TABLE award_winners ADD CONSTRAINT constraint_name PRIMARY KEY (movie_id) ENABLE;
+ALTER TABLE award_winners ADD CONSTRAINT pk_award_winners PRIMARY KEY (movie_id) ENABLE;
 
 /* Create and generate customers */
 CREATE TABLE customers (	
@@ -57,20 +57,21 @@ COMMENT ON COLUMN customers.gender IS 'The value for gender should be either: Ma
 COMMENT ON COLUMN customers.YRS_CUSTOMER IS 'The value for YRS_CUSTOMER should be: number between 1 and 8';
 COMMENT ON COLUMN customers.age_range IS 'The value for age_range should be either: Silent Generation, Baby Boomer, GenX, Millenials, GenZ';
 
+-- Create customer activity. This will use the foreign keys to ensure that only valid values are created.
 CREATE TABLE activity
    (
-    day_id TIMESTAMP (6), 
-	movie_id NUMBER, 
-	cust_id NUMBER, 
-	app VARCHAR2(100), 
-	device VARCHAR2(100), 
-	list_price NUMBER(5,2), 
-	discount_percent NUMBER(5,2), 
-	amount NUMBER(5,2),  
-  CONSTRAINT fk_activity_cust_id FOREIGN KEY (cust_id)
-    REFERENCES customers (cust_id) ENABLE,
-  CONSTRAINT fk_activity_movie_id FOREIGN KEY (movie_id)
-    REFERENCES award_winners (movie_id) ENABLE
+    day_id date, 
+    movie_id NUMBER, 
+    cust_id NUMBER, 
+    app VARCHAR2(100), 
+    device VARCHAR2(100), 
+    list_price NUMBER(5,2), 
+    discount_percent NUMBER(5,2), 
+    amount NUMBER(5,2),  
+    CONSTRAINT fk_activity_cust_id FOREIGN KEY (cust_id)
+      REFERENCES customers (cust_id) ENABLE,
+    CONSTRAINT fk_activity_movie_id FOREIGN KEY (movie_id)
+      REFERENCES award_winners (movie_id) ENABLE
    );     
 
 -- These comments will tell the AI model how to generate data for a column
@@ -79,17 +80,20 @@ COMMENT ON COLUMN activity.device IS 'Possible values: laptop, roku, appletv';
 COMMENT ON COLUMN activity.list_price IS 'Possible values: 0,1.99,3.99';
 COMMENT ON COLUMN activity.discount_percent IS 'Fraction between 0 and 1. If list_price is 0, then 0';
 COMMENT ON COLUMN activity.amount IS 'Value equals list_price * 1-discount';
+COMMENT ON COLUMN activity.app IS 'When device is roku or appletv, then MovieStreamer. Otherwise, choose MovieStreamer or browser';
 
 --
 -- Generate data based on the rules in the comments. You can add additional rules to the generate function too.
 -- The data will be generated based on the rules in the column contents
 -- And, data integrity rules are applied for the primary->foreign key relationships
+-- This will take a few minutes 
+--
 BEGIN
     DBMS_CLOUD_AI.GENERATE_SYNTHETIC_DATA(
-        profile_name => '&AZURE_OPENAI_PROFILE_NAME',  
+        profile_name => '&AI_PROFILE_NAME',  
         object_list => '[                          
                           {"owner": "&USER_NAME", "name": "customers","record_count":20},
-                          {"owner": "&USER_NAME", "name": "activity","record_count":5500}
+                          {"owner": "&USER_NAME", "name": "activity","record_count":500}
                         ]',
 		params => '{
                 "comments":true,
@@ -100,12 +104,5 @@ END;
 /
 
 -- Query the new data sets!
-select ai what are total sales and discounts by age range;
-select ai list 10 customers include all attributes;
-
-
-
-
-
-select * from "MOVIESTREAM"."AWARD_WINNERS";
-
+SELECT * FROM award_winners;
+SELECT * FROM activity;

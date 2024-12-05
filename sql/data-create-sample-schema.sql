@@ -5,7 +5,6 @@
 -- Use the Oracle LiveLabs has utilities for setting up sample data and schemas. Use this script to set up data
 -- used by the samples
 --
-
 -- run the config script to set up variables
 @config.sql
 
@@ -64,7 +63,7 @@ end;
 /
 
 prompt Connecting as database user &USER_NAME
-conn &USER_NAME/&USER_PASSWORD@jdbc:oracle:thin:@&CONN
+conn &USER_NAME/&USER_PASSWORD@&CONN
 
 prompt Adding data sets. This will take a few minutes
 exec workshop.add_dataset(tag => 'gen-ai')

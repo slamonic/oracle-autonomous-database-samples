@@ -43,12 +43,12 @@ chmod 600 config.sql
 |USER_PASSWORD|Password for the sample database user|'watchS0meMovies#'
 |**Select AI and GenAI**|
 |AZURE_OPENAI_RESOURCE_NAME|Name of the Azure OpenAI endpoint|'dev-adb-azure-openai'|
-|AZURE_OPENAI_ENDPOINT|Your Azure OpenAI endpoint (server name only)|'my-openai.openai.azure.com'|
+|AI_ENDPOINT|Your Azure OpenAI endpoint (server name only)|'my-openai.openai.azure.com'|
 |AZURE_OPENAI_DEPLOYMENT_NAME|Your Azure OpenAI deployment name. This is used for NL2SQL and AI SQLfunctions|'gpt-4o'|
 |AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME|The Azure OpenAI deployment that uses an embedding model. This is used for creating vector embeddings.|'text-embedding-ada-002'|
-|AZURE_OPENAI_KEY|Azure OpenAI secret key|'3Cu9AB...H53'|
-|AZURE_OPENAI_PROFILE_NAME|The Select AI profile that will reference your Azure OpenAI deployment|'gpt4o'|
-|AZURE_OPENAI_CREDENTIAL_NAME|The database credential that will be used to connect to Azure OpenAI|'azure_cred4o'|
+|AI_KEY|Azure OpenAI secret key|'3Cu9AB...H53'|
+|AI_PROFILE_NAME|The Select AI profile that will reference your Azure OpenAI deployment|'gpt4o'|
+|AI_CREDENTIAL_NAME|The database credential that will be used to connect to Azure OpenAI|'azure_cred4o'|
 |**Azure Data Lake Storage**|
 |STORAGE_ACCOUNT_NAME|Name of your Azure Data Lake Storage Gen 2 account. You can run [`show-data-lake-storage-info.sh`](../azure-cli/show-data-lake-storage-info.sh) to get storage details|'mysamplestorage'|
 |STORAGE_URL|Azure data lake storage URL|'https://mysamplestorage.blob.core.windows.net/adb-sample'

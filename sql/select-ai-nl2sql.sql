@@ -16,7 +16,7 @@
 -- Set that profile for this session. When using the SELECT AI command line, you need to set the current profile.
 BEGIN
   dbms_cloud_ai.set_profile(
-        profile_name => '&AZURE_OPENAI_PROFILE_NAME'
+        profile_name => '&AI_PROFILE_NAME'
     );
 END;
 /
@@ -51,7 +51,7 @@ There are also api's for using Select AI
 SELECT 
     DBMS_CLOUD_AI.GENERATE(
         PROMPT => 'What is Tom Hanks best known for',
-        PROFILE_NAME => '&AZURE_OPENAI_PROFILE_NAME',
+        PROFILE_NAME => '&AI_PROFILE_NAME',
         ACTION       => 'chat'                     
     ) AS response
 FROM dual; 

@@ -14,28 +14,41 @@ DECLARE
     l_exists number := 0;
     l_type varchar2(20) := nvl(upper('&user_param'),'ALL');
 BEGIN
-    -- Azure OpenAI
-    if l_type in ('OPENAI','ALL') then
+    -- AI provider. Note, they will have different syntax based on the provider
+    if l_type in ('AI','ALL') then
         -- Create your credential. Replace it if already exists
         select COUNT(*)
         into l_exists
         from user_credentials    
-        where upper(credential_name)=upper('&AZURE_OPENAI_CREDENTIAL_NAME');
+        where upper(credential_name)=upper('&AI_CREDENTIAL_NAME');
 
+        -- credential exists, so drop it
         IF l_exists = 1 THEN
             dbms_cloud.drop_credential (
-                credential_name => '&AZURE_OPENAI_CREDENTIAL_NAME'
+                credential_name => '&AI_CREDENTIAL_NAME'
             );
         END IF;
 
-        dbms_cloud.create_credential (                                                 
-            credential_name => '&AZURE_OPENAI_CREDENTIAL_NAME',                                            
-            username => 'AZURE_OPENAI',                                                 
-            password => '&AZURE_OPENAI_KEY'
-        );
+        -- Check for OCI. 
+        IF UPPER('&AI_PROVIDER') = 'OCI' THEN
+            dbms_cloud.create_credential(                                               
+                credential_name => '&AI_CREDENTIAL_NAME',                                          
+                user_ocid       => '&OCI_USER_OCID',    
+                tenancy_ocid    => '&OCI_TENANCY_OCID',
+                fingerprint     => '&OCI_FINGERPRINT',
+                private_key     => '&OCI_PRIVATE_KEY'
+            );
+        ELSE
+            -- All other AI providers
+            dbms_cloud.create_credential (                                                 
+                credential_name => '&AI_CREDENTIAL_NAME',                                            
+                username => UPPER('&AI_PROVIDER'),                                                 
+                password => '&AI_KEY'
+            );
+        END IF; -- OCI vs other AI services
+    END IF; -- AI Credential
 
-    END IF; -- Azure OpenAI
-
+    -- Create Storage credential
     if l_type in ('STORAGE','ALL') then
         -- Create your credential. Replace it if already exists
         select COUNT(*)
@@ -43,18 +56,29 @@ BEGIN
         from user_credentials    
         where upper(credential_name)=upper('&STORAGE_CREDENTIAL_NAME');
 
+        -- drop existing credential
         IF l_exists = 1 THEN
             dbms_cloud.drop_credential (
                 credential_name => '&STORAGE_CREDENTIAL_NAME'
             );
         END IF;
-                          
-        dbms_cloud.create_credential(
-            credential_name => '&STORAGE_CREDENTIAL_NAME',
-            username => '&STORAGE_ACCOUNT_NAME',
-            password => '&STORAGE_KEY'
-        );
 
+        -- Check for OCI
+        IF UPPER('&STORAGE_PROVIDER') = 'OCI' THEN
+            dbms_cloud.create_credential(                                               
+                credential_name => '&STORAGE_CREDENTIAL_NAME',                                          
+                user_ocid       => '&OCI_USER_OCID',    
+                tenancy_ocid    => '&OCI_TENANCY_OCID',
+                fingerprint     => '&OCI_FINGERPRINT',
+                private_key     => '&OCI_PRIVATE_KEY'
+            );
+        ELSE
+            dbms_cloud.create_credential(
+                credential_name => '&STORAGE_CREDENTIAL_NAME',
+                username => '&STORAGE_ACCOUNT_NAME',
+                password => '&STORAGE_KEY'
+            );
+        END IF; -- OCI vs other AI services
     END IF; -- Storage   
 END;
 /

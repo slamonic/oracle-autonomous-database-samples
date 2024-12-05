@@ -31,3 +31,4 @@ Temporary Items
 .crt
 .csr
 .pem
+replace-default-config.sh
