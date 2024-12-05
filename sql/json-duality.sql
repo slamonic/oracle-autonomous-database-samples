@@ -109,8 +109,7 @@ customer @insert @update @delete
     age             : age,
     yrs_customer    : yrs_customer
     streams : streams @insert @update @delete
-    [{
-        cust_id : cust_id
+    [{        
         day_id : day_id
         genre_id : genre_id
         movie_id : movie_id
@@ -121,10 +120,10 @@ customer @insert @update @delete
 select * 
 from customer_streams_dv;
 
--- Query the duality view using JSON functions. Pull back the customers watching romance movies
+-- Query the duality view using JSON functions. Pull back the customers who have been around for 10 years
 select * 
 from customer_streams_dv
-where JSON_VALUE(data,'$.streams.genre_id')=19;
+where JSON_VALUE(data,'$.yrs_customer') > 10;
 
 
 /* Now to insert a new record into customers and streams we can do that through the Duality View. 
