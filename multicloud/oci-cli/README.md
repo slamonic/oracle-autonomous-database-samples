@@ -15,7 +15,11 @@ The steps below show how to create an Autonomous Database using the OCI CLI.
     * [Use OCI Object Storage](https://docs.oracle.com/en-us/iaas/Content/Security/Reference/objectstorage_security.htm#iam-policies)
 
 ## Deploy your Autonomous Database
-Use the following scripts to deploy your Autonomous Database and sample data. You can run the scripts independently or run `create-all-resources.sh`. Simply update the [`config`](#configuration-file) prior to running the scripts:
+Use the following scripts to deploy your Autonomous Database and sample data on OCI. Because the sample script deploys ADB on a public endpoint, the architecture is very simple: 
+
+![ADB on OCI](../images/oci-adb-github-samples.drawio.png)
+
+You can run the scripts independently or run `create-all-resources.sh`. Simply update the [`config`](#configuration-file) prior to running the scripts:
 
 |Script|Description|
 |----|---|
