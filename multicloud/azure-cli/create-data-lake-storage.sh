@@ -62,7 +62,7 @@ echo "Upload files to that directory"
 az storage fs directory upload \
     --account-name $STORAGE_ACCOUNT_NAME \
     --file-system $STORAGE_CONTAINER_NAME \
-    --source "../sql/support-site/*" \
+    --source "../../sql/support-site/*" \
     --destination-path support-site \
     --recursive \
     --auth-mode login
@@ -78,7 +78,7 @@ echo "Upload files to that directory"
 az storage fs directory upload \
     --account-name $STORAGE_ACCOUNT_NAME \
     --file-system $STORAGE_CONTAINER_NAME \
-    --source "../sql/data/*" \
+    --source "../../sql/data/*" \
     --destination-path data \
     --recursive \
     --auth-mode login
