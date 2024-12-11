@@ -15,11 +15,16 @@ The steps below show how to create an Autonomous Database using the OCI CLI.
     * [Use OCI Object Storage](https://docs.oracle.com/en-us/iaas/Content/Security/Reference/objectstorage_security.htm#iam-policies)
 
 ## Deploy your Autonomous Database
-Use the following scripts to deploy your Autonomous Database and sample data on OCI. Because the sample script deploys ADB on a public endpoint, the architecture is very simple: 
+Autonomous Database will be deployed on a public endpoint - which will simplify the architecture. The OCI CLI will deploy:
+* An Oracle Autonomous Database. It is deployed to a private subnet on that VPC Network. That private subnet is managed by Oracle Database@Google Cloud.
+* An Object Storage bucket with sample data
+* Sample code will use OCI GenAI (or other AI service).
+* Use your computer as a client.
+
 
 ![ADB on OCI](../images/oci-adb-github-samples.drawio.png)
 
-You can run the scripts independently or run `create-all-resources.sh`. Simply update the [`config`](#configuration-file) prior to running the scripts:
+You can run the OCI CLI scripts independently or run `create-all-resources.sh`. Simply update the [`config`](#configuration-file) prior to running the scripts:
 
 |Script|Description|
 |----|---|
@@ -28,6 +33,8 @@ You can run the scripts independently or run `create-all-resources.sh`. Simply u
 |[create-all-resources.sh](create-all-resources.sh)|Creates your resource group, network, ADB and VM|
 |[create-data-lake-storage.sh](create-data-lake-storage.sh)|Creates an OCI Object Storage bucket and uploads sample data into that bucket|
 |[delete-all-resources.sh](delete-all-resources.sh)|Deletes your compartment, bucket and Autonomous Database|
+|[show-adb-info.sh](show-adb-info.sh)|Shows information about your ADB - including you JDBC connection details to the HIGH service|
+|[show-data-lake-storage-info.sh](show-data-lake-storage-info.sh)|Shows information about your data lake storage - including the storage endpoint URL|
 
 ### Configuration file
 The OCI cli deployment scripts rely on settings found in the config file. These resources **will be created** by the scripts. Update the config file prior to running any of the scripts. 
@@ -63,6 +70,8 @@ Connect to your Autonomous Database!
 * Use these great VS Code extensions that help you develop and debug your database apps:
     * SQL Developer for VS Code ([Learn More](https://www.oracle.com/database/sqldeveloper/vscode/) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=Oracle.sql-developer))
     * Oracle Developer Tools for VS Code  ([Learn More](https://docs.oracle.com/en/database/oracle/developer-tools-for-vscode/getting-started/gettingstarted.html) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=Oracle.oracledevtools)) 
+* [Use the sample scripts](../../sql/README.md) to learn how to use different features - like Select AI, data lake integration, JSON, and more.
+
 
 #### JDBC Example:
 JDBC is a common way to connect to Autonomous Database. For example, you can use the **Custom JDBC URL** in the VS Code SQL Developer Extension:

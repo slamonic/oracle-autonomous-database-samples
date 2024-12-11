@@ -13,12 +13,6 @@ source ./config
 # Create a VPC
 gcloud compute networks create $VPC_NETWORK_NAME --subnet-mode=custom
 
-#gcloud compute networks subnets create private-subnet \
-#    --network=$VPC_NETWORK_NAME \
-#    --region=$REGION \
-#   --range=192.168.5.0/24 \
-#   --enable-private-ip-google-access
-
 gcloud compute networks subnets create $SUBNET_CLIENT_NAME \
     --network=$VPC_NETWORK_NAME \
     --region=$REGION \

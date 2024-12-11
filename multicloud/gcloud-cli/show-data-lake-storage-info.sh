@@ -12,6 +12,7 @@ gcloud storage ls --long --recursive gs://$BUCKET_NAME
 
 echo ""
 echo "Bucket Name: $BUCKET_NAME" 
+gcloud storage hmac list
 echo "Storage URL:"
 echo "https://storage.googleapis.com/$BUCKET_NAME"
 echo ""

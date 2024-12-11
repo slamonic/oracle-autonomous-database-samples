@@ -1,7 +1,7 @@
 # Oracle Database@Azure: Create an Autonomous Database
 There are different ways that you can deploy a new Oracle Autonomous Database:
 * [Using the Azure Portal](https://youtu.be/QOCvRr5CfeQ)
-* [Using Terraform scripts](https://github.com/oci-landing-zones/terraform-oci-multicloud-azure/tree/main)
+* [Using Terraform scripts](https://github.com/oci-landing-zones/terraform-oci-multicloud-azure)
 * Using the Azure CLI
 
 The steps below show how to create an Autonomous Database using the Azure CLI. 
@@ -29,6 +29,8 @@ You can run the scripts independently or run `create-all-resources.sh`. Simply u
 |[create-all-resources.sh](create-all-resources.sh)|Creates your resource group, network, ADB and VM|
 |[create-data-lake-storage.sh](create-data-lake-storage.sh)|Creates an Azure Data Lake Gen 2 storage account, a container and uploads sample data into that container|
 |[delete-all-resources.sh](delete-all-resources.sh)|Deletes your resource group, network, ADB and VM|
+|[show-adb-info.sh](show-adb-info.sh)|Shows information about your ADB - including you JDBC connection details to the HIGH service|
+|[show-data-lake-storage-info.sh](show-data-lake-storage-info.sh)|Shows information about your data lake storage - including the storage endpoint URL|
 
 ### Configuration file
 The Azure cli deployment scripts rely on settings found in the config file. These resources **will be created** by the scripts. Update the config file prior to running any of the scripts. 
@@ -80,6 +82,8 @@ Connect to your Autonomous Database!
 * Use these great VS Code extensions that help you develop and debug your database apps:
     * SQL Developer for VS Code ([Learn More](https://www.oracle.com/database/sqldeveloper/vscode/) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=Oracle.sql-developer))
     * Oracle Developer Tools for VS Code  ([Learn More](https://docs.oracle.com/en/database/oracle/developer-tools-for-vscode/getting-started/gettingstarted.html) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=Oracle.oracledevtools)) 
+* [Use the sample scripts](../../sql/README.md) to learn how to use different features - like Select AI, data lake integration, JSON, and more.
+
 
 #### JDBC Example:
 JDBC is a common way to connect to Autonomous Database. For example, you can use the **Custom JDBC URL** in the VS Code SQL Developer Extension:

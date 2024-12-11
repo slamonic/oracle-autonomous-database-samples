@@ -13,6 +13,8 @@ prompt "Creating credential: &user_param"
 DECLARE
     l_exists number := 0;
     l_type varchar2(20) := nvl(upper('&user_param'),'ALL');
+    l_username varchar2(400);
+    l_password varchar2(400);
 BEGIN
     -- AI provider. Note, they will have different syntax based on the provider
     if l_type in ('AI','ALL') then
@@ -73,10 +75,14 @@ BEGIN
                 private_key     => '&OCI_PRIVATE_KEY'
             );
         ELSE
+            -- Google and Azure use different settings for username and password
+            l_username := CASE WHEN UPPER('&STORAGE_PROVIDER') = 'AZURE' THEN '&AZURE_STORAGE_ACCOUNT_NAME' ELSE '&GOOGLE_STORAGE_ACCESS_KEY' END;
+            l_password := CASE WHEN UPPER('&STORAGE_PROVIDER') = 'AZURE' THEN '&AZURE_STORAGE_KEY' ELSE '&GOOGLE_STORAGE_SECRET' END;
+
             dbms_cloud.create_credential(
                 credential_name => '&STORAGE_CREDENTIAL_NAME',
-                username => '&STORAGE_ACCOUNT_NAME',
-                password => '&STORAGE_KEY'
+                username => l_username,
+                password => l_password
             );
         END IF; -- OCI vs other AI services
     END IF; -- Storage   

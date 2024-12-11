@@ -99,8 +99,10 @@ az storage account keys list \
     --resource-group $RESOURCE_GROUP --query "[0].value" -o tsv    
 
 echo "Storage URL:"
-az storage account show \
+STORAGE_URL=$(az storage account show \
     --name $STORAGE_ACCOUNT_NAME \
     --query primaryEndpoints.blob \
-    --output tsv
+    --output tsv)
+echo $STORAGE_URL$STORAGE_CONTAINER_NAME
+
 echo ""

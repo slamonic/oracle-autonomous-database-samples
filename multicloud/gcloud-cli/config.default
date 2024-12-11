@@ -1,0 +1,46 @@
+# Copyright (c) 2024 Oracle and/or its affiliates.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
+
+# update the values below to match your requirements
+# example: us-east4
+REGION=""
+PROJECT=""
+
+## IDENTITIES
+# The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character
+# example: watchS0meMovies#
+USER_PASSWORD=""
+
+## ADB properties
+# Database name. This will be used for the display name as well.
+ADB_NAME="quickstart"
+
+# ADB IP range. It can not overlap with the client subnet range
+# example: 192.168.11.0/24
+SUBNET_DB_IP_RANGE=""
+
+## NETWORKING
+# public client network
+# example: dev-network
+VPC_NETWORK_NAME=""
+
+# names firewall rules
+VPC_FIREWALL_INGRESS_NAME="allow-common-ingress-ports"
+VPC_FIREWALL_EGRESS_NAME="allow-client-egress-ports"
+
+# client subnet
+# example: dev-sn-client
+SUBNET_CLIENT_NAME=""
+# example: 192.168.10.0/24
+SUBNET_CLIENT_IP_RANGE=""
+
+## COMPUTE VM
+# example: dev-vm-client
+VM_NAME=""
+VM_IMAGE_FAMILY="windows-2022"
+VM_MACHINE_TYPE="e2-standard-4"
+
+## CLOUD STORAGE
+# Storage accounts require a unique name across google. Enter your unique name below.
+# example: adb-sample-quickstart
+BUCKET_NAME=""
