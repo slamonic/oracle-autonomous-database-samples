@@ -2,9 +2,19 @@
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
 # update the values below to match your requirements. 
-TENANCY_OCID="ocid1.tenancy.oc1..aaaaaaaafcue47pqmrf4vigneebgbcmmoy5r7xvoypicjqqge32ewnrcyx2a"
-REGION="us-ashburn-1"
-COMPARTMENT_NAME="from-github"
+
+# your Tenancy unique identifier 
+# example: ocid1.tenancy.oc1..example....
+TENANCY_OCID=""
+# Region where resources will be deployed
+# example: us-ashburn-1
+REGION=""
+
+# Compartment name. Will be created if it does not exist
+# example: mycompartment
+COMPARTMENT_NAME=""
+
+# Autonomous Database name
 ADB_NAME="quickstart"
 
 ## CLOUD STORAGE
@@ -13,4 +23,5 @@ BUCKET_NAME="adb-sample"
 
 ## IDENTITIES
 # The password is for the ADB ADMIN user. It must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character
-USER_PASSWORD="bigdataPM2019#"
+# example: watchS0meMovies#
+USER_PASSWORD=""

@@ -1,7 +1,7 @@
 -- Copyright (c) 2024 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
-/** Export data to Azure Data Lake **/
+/** Export data to cloud storage **/
 
 /* PREREQUISITES
     Install the sample schema using script

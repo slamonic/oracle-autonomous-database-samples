@@ -2,38 +2,49 @@
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
 # update the values below to match your requirements
-LOCATION="eastus"
-RESOURCE_GROUP="development"
+# Region and resource groupwhere resources are deployed
+# example: eastus
+LOCATION=""
+RESOURCE_GROUP=""
 ADB_NAME="quickstart"
 
 ## NETWORKING
 # database
-VNET_NAME="dev-vnet"
-VNET_PREFIX="19x.xxx.0.0/16"
+# example: dev-vnet
+VNET_NAME=""
+# example: 192.168.0.0/16
+VNET_PREFIX=""
 
 # subnet for the database
-SUBNET_NAME="dev-sn-db"
-SUBNET_PREFIX="19x.xxx.1.0/24"
+# example: dev-sn-db
+SUBNET_NAME=""
+# example: 192.168.1.0/24
+SUBNET_PREFIX=""
 
 # client subnet
-SUBNET2_NAME="dev-sn-client"
-SUBNET2_PREFIX="19x.xxx.2.0/24"
+# example: dev-sn-client
+SUBNET2_NAME=""
+# example: 192.168.2.0/24
+SUBNET2_PREFIX=""
 
 #network security group
 NSG_NAME=$SUBNET2_NAME-nsg
 
 ## COMPUTE VM
-VM_NAME="adb-vm-client"
+# example: adb-vm-client
+VM_NAME=""
 VM_PREFERRED_SIZES=( "Standard_DS3_v2" "Standard_DC1s_v2" "Standard_DC2s_v2" "Standard_DC2ads_v5" "Standard_L4s"  )
 VM_IMAGE="MicrosoftWindowsDesktop:Windows-11:win11-22h2-pro:latest"
 
 ## CLOUD STORAGE
 # Storage accounts require a unique name across azure. Enter your unique name below.
-STORAGE_ACCOUNT_NAME="your-storage-account"
+# example: devadbstorageacct
+STORAGE_ACCOUNT_NAME=""
 STORAGE_CONTAINER_NAME="adb-sample"
 
 ## IDENTITIES
 # This identity will be used for your VM. The password will also be used for the database ADMIN user
 USER_NAME="adb"
---The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character
+# The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character
+# example: watchS0meMovies#
 USER_PASSWORD=""

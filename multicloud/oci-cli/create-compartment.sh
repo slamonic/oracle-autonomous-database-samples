@@ -9,4 +9,11 @@ echo ""
 # ensure you update the config file to match your deployment prior to running the deployment
 source ./config
 
-oci iam compartment create --region $REGION --compartment-id $TENANCY_OCID --name "$COMPARTMENT_NAME" --description "Created by oracle-autonomous-database-samples"
+RESULT=$(oci iam compartment create --region $REGION --compartment-id $TENANCY_OCID --name "$COMPARTMENT_NAME" --description "Created by oracle-autonomous-database-samples" 2>&1)
+
+if echo "$RESULT" | grep -q "CompartmentAlreadyExists"; then
+    echo "Compartment '$COMPARTMENT_NAME' already exists. Continuing execution..."
+else
+    echo "Error creating compartment. Exiting."
+    exit 1
+fi
