@@ -3,9 +3,9 @@ Numerous SQL scripts are available to help you get started using Autonomous Data
 
 Prerequisites:
 * Create an Autonomous Database
-    * [On OCI](./multicloud/oci-cli/README.md) 
-    * [On Azure](./multicloud/azure-cli/README.md)
-    * On Google Cloud (deployment script coming soon)
+    * [On OCI](../multicloud/oci-cli/README.md) 
+    * [On Azure](../multicloud/azure-cli/README.md)
+    * [On Google Cloud](../multicloud/gcloud-cli/README.md)
 * Azure and Google Cloud support private endpoints only; a VM must be deployed on the same VCN as Autonomous Database (or on a network that can access your Autonomous Database). OCI supports both public and private endpoints; ADB is deployed using public endpoints in our sample which means you can use your computer to access the database.
 * Use these great VS Code extensions that help you develop and debug your database apps:
     * SQL Developer for VS Code ([Learn More](https://www.oracle.com/database/sqldeveloper/vscode/) | [Marketplace](https://marketplace.visualstudio.com/items?itemName=Oracle.sql-developer))
