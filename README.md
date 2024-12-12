@@ -16,7 +16,7 @@ Use these samples to deploy Autonomous Database on cloud providers using APIs. T
 * Deploy Autonomous Database: 
     * [On OCI](./multicloud/oci-cli/README.md) 
     * [On Azure](./multicloud/azure-cli/README.md)
-    * On Google Cloud (deployment script coming soon)
+    * [On Google](./multicloud/gcloud-cli/README.md)
 * Connect to your Autonomous Database
     * [Learn about connectivity options](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/connect-preparing.html)
     * Use these great VS Code extensions that help you develop and debug your database apps
