@@ -96,9 +96,9 @@ JDBC is a common way to connect to Autonomous Database. For example, you can use
 
 Notice the `jdbc:oracle:thin:@` prefix followed by a connection string. You can find the connection string in different ways. 
 
-1. Go to your Autonomous Database blade in the Azure Portal and go to **Settings -> Connections**:
-    ![Azure Portal connections](../images/connections-portal.png)
-2. Use the Azure cli script [`show-adb-info.sh`](./show-adb-info.sh). That script will return information about your Autonomous Database, including connection details.
+1. Go to your Autonomous Database in the Google Cloud Console and go to **Connections**:
+    ![Google CLoud Portal connections](../images/connection-console-google.png)
+2. Use the gcloud cli script [`show-adb-info.sh`](./show-adb-info.sh). That script will return information about your Autonomous Database, including connection details.
 
 <hr>
 Copyright (c) 2025 Oracle and/or its affiliates.<br>
