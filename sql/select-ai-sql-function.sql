@@ -1,4 +1,4 @@
--- Copyright (c) 2024 Oracle and/or its affiliates.
+-- Copyright (c) 2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
 /* Apply AI SQL function to your data to summarize information, make recommendations and more */
@@ -10,7 +10,7 @@
 
 -- Run this script as the Autonomous Database database user that will be access Azure OpenAI 
 
--- config.sql contains the endpoints, resource groups and other settings required to connect to your Azure OpenAI deployment
+-- config.sql contains the configuration properties, like endpoints, credentials, AI providers and more
 @config.sql
 
 -- Create your credential and Select AI Profile

@@ -101,5 +101,5 @@ Notice the `jdbc:oracle:thin:@` prefix followed by a connection string. You can 
 2. Use the Azure cli script [`show-adb-info.sh`](./show-adb-info.sh). That script will return information about your Autonomous Database, including connection details.
 
 <hr>
-Copyright (c) 2024 Oracle and/or its affiliates.<br>
+Copyright (c) 2025 Oracle and/or its affiliates.<br>
 Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
