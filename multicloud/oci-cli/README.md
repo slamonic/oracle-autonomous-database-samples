@@ -1,7 +1,7 @@
 # Create an Autonomous Database on OCI
 There are different ways that you can deploy a new Oracle Autonomous Database:
 * [Using the OCI Console](https://youtu.be/5BUXoBewZbQ)
-* [Using Terraform scripts](https://github.com/oci-landing-zones/terraform-oci-multicloud-azure/tree/main)
+* Using Terraform scripts: [Oracle Cloud Foundation Terraform Structure](https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/tree/main/cloud-foundation)
 * Using the OCI CLI
 
 The steps below show how to create an Autonomous Database using the OCI CLI. 
@@ -16,7 +16,7 @@ The steps below show how to create an Autonomous Database using the OCI CLI.
 
 ## Deploy your Autonomous Database
 Autonomous Database will be deployed on a public endpoint - which will simplify the architecture. The OCI CLI will deploy:
-* An Oracle Autonomous Database. It is deployed to a private subnet on that VPC Network. That private subnet is managed by Oracle Database@Google Cloud.
+* An Oracle Autonomous Database 
 * An Object Storage bucket with sample data
 * Sample code will use OCI GenAI (or other AI service).
 * Use your computer as a client.
