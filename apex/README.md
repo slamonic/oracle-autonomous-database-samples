@@ -7,7 +7,9 @@ ADB Chat allows you to query data in Autonomous Database using natural language.
 * [NL2SQL](../sql/select-ai-nl2sql.sql)
 * [Select AI RAG](../sql/select-ai-rag.sql)
 
-
+<video width="640" height="360" controls>
+  <source src="./select-ai-chat-across-subject-areas.mp4" type="video/mp4">
+</video>
 
 <hr>
 Copyright (c) 2025 Oracle and/or its affiliates.<br>
