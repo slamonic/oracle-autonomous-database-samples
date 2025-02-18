@@ -7,7 +7,6 @@ ADB Chat allows you to query data in Autonomous Database using natural language.
 * [NL2SQL](../sql/select-ai-nl2sql.sql)
 * [Select AI RAG](../sql/select-ai-rag.sql)
 
-![ADB Chat APEX app](https://github.com/user-attachments/assets/e6db014b-7b6f-416c-b936-d5e4e00d76c7)
 
 
 <hr>
