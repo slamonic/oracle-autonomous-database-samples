@@ -6,7 +6,8 @@ Autonomous Database is already configured with APEX ([see documentation](https:/
 ## ADB Chat
 ADB Chat allows you to query data in Autonomous Database using natural language. It uses the AI profiles that are in the current user's schema. Those profiles support both natural language to SQL as well as RAG.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2C-wirdC0aw?si=yVmGrZj2rNvJ36Nf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[![ADB Chat app](https://img.youtube.com/vi/2C-wirdC0aw/0.jpg)](https://www.youtube.com/watch?v=2C-wirdC0aw)
+
 
 Simply import the application into your APEX development environment.
 
