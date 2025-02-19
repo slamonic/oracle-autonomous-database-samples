@@ -10,7 +10,7 @@ ADB Chat allows you to query data in Autonomous Database using natural language.
 
 Simply import the application into your APEX development environment.
 
-* [Download the APEX application](../apex/select-ai-chat/f101.sql?raw=true)
+* [Download the APEX application (right-click to save)](../apex/select-ai-chat/f101.sql?raw=true)
 
 Background material:
 * [APEX in Autonomous Database documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/application-express-autonomous-database.html)
