@@ -23,7 +23,7 @@ select
     dbms_cloud_ai.generate (
         action => 'chat',
         profile_name => '&AI_PROFILE_NAME',
-        prompt => 'Parse the given address without any comments. ' 
+        prompt => 'Parse the given address without any comments. Only return valid JSON - no other text.' 
             || 'The result should be 1) a json object for that address and 2) be simple text, not markdown. '
             || 'Here are the required JSON object fields: {addressNumber, streetName, unitNumber, city, state, zip}. '
             || 'Apply to the following address: ' || address
@@ -76,7 +76,7 @@ SELECT
     dbms_cloud_ai.generate (
         action => 'chat',
         profile_name => '&AI_PROFILE_NAME',
-        prompt => 'Parse the given address list without any comments. ' 
+        prompt => 'Parse the given address list without any comments. Only return valid JSON - no other text.' 
             || 'The result should be 1) a json array with an json object for each address and 2) be simple text, not markdown. '
             || 'Here are the required JSON object fields: {addressNumber, streetName, unitNumber, city, state, zip}. '
             || 'Apply to the following list of address: ' || addresses
@@ -129,7 +129,7 @@ select
     dbms_cloud_ai.generate (
         action => 'chat',
         profile_name => '&AI_PROFILE_NAME',
-        prompt => 'Summarize the support chat into the following json values without any comments: {summary, keyPhrases, sentiment, supportRep}. content: '
+        prompt => 'Summarize the support chat into the following json values without any comments - only return valid JSON - no other text: {summary, keyPhrases, sentiment, supportRep}. content: '
             || support_chat || '.  The result should 1) be a valid json document that can be validated against a json schema, 2) begin with { and end with }, 3) be simple text, not markdown. ' 
             || 'Apply these rules to determine the values: ' 
             || 'supportRep: the name of the customer service representative, '
