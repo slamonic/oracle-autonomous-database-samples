@@ -5,7 +5,7 @@
 
 The select-ai-chat application has been renamed to "Ask Oracle" which includes many new features.
 
-[GO TO ASK ORACLE](../apex/Ask-Oracle/README.md)
+[GO TO ASK ORACLE](https://github.com/oracle-devrel/oracle-autonomous-database-samples/tree/main/apex/Ask-Oracle/README.md)
 
 
 
