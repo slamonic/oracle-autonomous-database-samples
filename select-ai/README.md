@@ -6,16 +6,16 @@ When you use Select AI, **Oracle Autonomous Database** manages the process of co
 
 Select AI also automates the **retrieval-augmented generation (RAG)** workflow: generating vector embeddings, performing semantic similarity searches, and retrieving relevant content from your vector store. Additional capabilities include **synthetic data generation**, **chat history support**, and other advanced AI functions — all accessible through SQL.
 
-The [`DBMS_CLOUD_AI`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-000CBBD4-202B-4E9B-9FC2-B9F2FF20F246) PL/SQL package provides programmatic integration with user-specified LLMs. It automatically augments prompts with schema metadata, enabling natural language-to-SQL translation, RAG with vector stores, synthetic data generation, and conversational LLM sessions. The package supports multiple AI providers and LLMs listed under [*Select Your AI Provider and LLMs*](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-about.html#GUID-FDAEF22A-5DDF-4BAE-A465-C1D568C75812) in the Oracle documentation.
+The [DBMS_CLOUD_AI](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-000CBBD4-202B-4E9B-9FC2-B9F2FF20F246) PL/SQL package provides programmatic integration with user-specified LLMs. It automatically augments prompts with schema metadata, enabling natural language-to-SQL translation, RAG with vector stores, synthetic data generation, and conversational LLM sessions. The package supports multiple AI providers and LLMs listed under [Select Your AI Provider and LLMs](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-about.html#GUID-FDAEF22A-5DDF-4BAE-A465-C1D568C75812) in the Oracle documentation.
 
 ---
 
 ## Folder Structure
 
-- **sql/** —  
-- **python/** —  
-- **r/** —  
-- **notebooks/** —  
+- **sql/**
+- **python/**
+- **r/**
+- **notebooks/**
 
 ---
 
