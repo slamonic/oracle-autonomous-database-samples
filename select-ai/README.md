@@ -21,5 +21,6 @@ The [DBMS_CLOUD_AI](https://docs.oracle.com/en/cloud/paas/autonomous-database/se
 
 ## Related Repository
 
-See the companion **Ask Oracle** repository for conversational agents and LLM-driven examples:  
-[oracle-samples/ask-oracle](https://github.com/oracle-samples/ask-oracle)
+**Ask Oracle** allows you to query data in Autonomous Database using natural language.  
+It uses the AI profiles stored in the current user's schema, supporting both natural language to SQL and retrieval-augmented generation (RAG).  
+[oracle-devrel/oracle-autonomous-database-samples/tree/main/apex/Ask-Oracle](https://github.com/oracle-devrel/oracle-autonomous-database-samples/tree/main/apex/Ask-Oracle)
