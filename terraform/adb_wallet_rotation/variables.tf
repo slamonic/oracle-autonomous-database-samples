@@ -65,7 +65,7 @@ variable "adb_workload_type" {
 variable "adb_db_version" {
   description = "Oracle database version"
   type        = string
-  default     = "19c"
+  default     = "26ai"
 }
 
 variable "adb_cpu_core_count" {

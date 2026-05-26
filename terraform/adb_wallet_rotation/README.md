@@ -88,7 +88,7 @@ terraform apply
 | `adb_db_name` | Database name — letters/numbers only, max 14 characters | — |
 | `adb_admin_password` | ADMIN user password (sensitive) | — |
 | `adb_workload_type` | Workload type: `OLTP` (ATP), `DW` (ADW), `AJD` (JSON), `APEX`, `LH` | `OLTP` |
-| `adb_db_version` | Oracle database version | `19c` |
+| `adb_db_version` | Oracle database version | `26ai` |
 | `adb_cpu_core_count` | Number of ECPUs (minimum 2) | `2` |
 | `adb_storage_tbs` | Storage in terabytes | `1` |
 | `wallet_password` | Password to protect the wallet zip file (sensitive) | — |
